@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deye monitoring</title>
+    <link rel="stylesheet" href="./src/index.css" />
+    <script type="module" src="/src/js/my-element.js"></script>
+    <script type="module" src="/src/js/main.js"></script>
+  </head>
+  <body>
+    <m-pv devices="[&quot;master-id&quot;,&quot;charger-id&quot;,&quot;garazh-id&quot;,&quot;pchelnik-id&quot;]" total-power="36000"></m-pv>
+    <m-battery></m-battery>
+    <m-load devices="[&quot;master-id&quot;,&quot;charger-id&quot;,&quot;garazh-id&quot;,&quot;pchelnik-id&quot;]" total-power="36000"></m-load>
+    <m-grid devices="[&quot;master-id&quot;,&quot;charger-id&quot;,&quot;garazh-id&quot;,&quot;pchelnik-id&quot;]" total-power="36000"></m-grid>
+    <m-generator devices="[&quot;master-id&quot;,&quot;charger-id&quot;,&quot;garazh-id&quot;,&quot;pchelnik-id&quot;]" total-power="36000"></m-generator>
+    <button id="fullscreen" onclick="window.showFullScreen(event)">FULLSCREEN</button>
+    <div id="update-date">wait for data update...</div>
+  </body>
+</html>

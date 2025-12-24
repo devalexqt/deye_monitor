@@ -1,0 +1,99 @@
+      /* @import "./progress_bar.css"; */
+
+      :host {
+        --height:50px;
+        --font-size-total:20px;     
+        --color-bg:rgb(50,50,50);
+        --color-soc:rgb(5, 139, 5);
+        --color-border:rgb(245, 217, 217);
+        --border-radius:16px;
+        --soc:30%; /*battery soc*/
+
+        --color-soc-charging:rgb(5, 139, 5);
+        --color-soc-discharging:#3498db;
+        --color-soc-low:#d49100;
+        --color-soc-critical:#c40202;
+      }
+      .wrapper{
+
+        --color-bar:var(--color-soc-charging);
+        overflow: hidden;
+        position: relative;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        background-color: var(--color-bg);
+        width: 100%;
+        height: var(--height);
+        border-radius: var(--border-radius);
+        border: 2px solid var(--color-border);
+
+        &[discharging]{
+            --color-bar:var(--color-soc-discharging);
+        }
+
+        &[bat_low]{
+            --color-bar:var(--color-soc-low);
+        }
+
+        &[bat_critical]{
+            --color-bar:var(--color-soc-critical);
+        }
+
+        &::before{
+            content: "";
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: calc(100% - var(--soc));
+            margin: auto;
+            /* background-color: var(--color-soc);             */
+            /*progress bar*/
+            background: linear-gradient(
+                45deg, 
+                var(--color-bar) 25%, 
+                color-mix(in srgb, var(--color-bar), white 30%) 25%, 
+                color-mix(in srgb, var(--color-bar), white 30%) 50%, 
+                var(--color-bar) 50%, 
+                var(--color-bar) 75%, 
+                color-mix(in srgb, var(--color-bar), white 30%) 75%, 
+                color-mix(in srgb, var(--color-bar), white 30%) 100%
+            );
+            background-size: 40px 40px;
+            animation: moveStripes 3s linear infinite;              
+        }        
+      }
+
+
+      .total-text{
+        position: absolute;
+        display: flex;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+        font-weight: 600;
+        font-size: var(--font-size-total);
+        text-shadow: 1px 1px 2px #333;
+      }
+
+@keyframes moveStripes {
+0% {
+    background-position: 0 0;
+}
+100% {
+    background-position: 40px 0;
+}
+}            
+
+@keyframes stall {
+0% { width: 0%; }
+100% { width: 95%; } /* max value */
+}
+
+m-notification{
+}

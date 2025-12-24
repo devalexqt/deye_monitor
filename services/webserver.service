@@ -1,0 +1,14 @@
+[Unit]
+Description=DEYE webserver
+Documentation=none
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+#Restart=on-failure
+
+ExecStart=/opt/production/server
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

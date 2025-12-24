@@ -1,0 +1,47 @@
+.striped-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    height: 30px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.striped-bar {
+    height: 100%;
+    width: 0%; 
+    border-radius:16px;
+    background: linear-gradient(
+        45deg, 
+        #3498db 25%, 
+        #2980b9 25%, 
+        #2980b9 50%, 
+        #3498db 50%, 
+        #3498db 75%, 
+        #2980b9 75%, 
+        #2980b9
+    );
+    background-size: 40px 40px;
+    animation: moveStripes 1s linear infinite, 
+                stall 15s cubic-bezier(1,.99,.03,.84) forwards;  
+
+}
+
+@keyframes moveStripes {
+0% {
+    background-position: 0 0;
+}
+100% {
+    background-position: 40px 0;
+}
+}            
+
+@keyframes stall {
+0% { width: 0%; }
+100% { width: 95%; } /* max value */
+}
+
+@media (max-width:600px){
+    .captcha-error-message{
+        max-width: 100%;
+    }
+}

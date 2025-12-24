@@ -1,0 +1,13 @@
+
+      :host {
+        --height:60px;
+        --color-bg:rgb(50,50,50);
+        /* --color-border:rgb(245, 217, 217);
+        --border-radius:16px;
+        --color-bg-pv:rgb(3, 78, 92);
+        --font-size-total:20px;      */
+      }
+
+input{
+  display: none;
+}

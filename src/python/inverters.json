@@ -1,0 +1,26 @@
+[
+    {
+        "id":"master-id",
+        "name":"Master",
+        "ip":"192.168.1.88",
+        "port":8899,        
+        "sn":2955433426,
+        "slave_id":1
+    },
+    {
+        "id":"garazh-id",        
+        "name":"garazh",
+        "ip":"192.168.1.88",
+        "port":8897,        
+        "sn":3101791933,
+        "slave_id":3
+    },
+    {
+        "id":"pchelnik-id",        
+        "name":"pchelnik",
+        "ip":"192.168.1.88",
+        "port":8896,        
+        "sn":2965333977,
+        "slave_id":2
+    }         
+]
