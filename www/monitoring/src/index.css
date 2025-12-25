@@ -34,10 +34,24 @@ body {
 
 #update-date{
   text-align: center;
+  margin-top: 0px;
+  &[old-date]{
+    color: red;
+    animation: blinker 1.5s linear infinite;
+  }
+  &[wait]{
+    color: rgb(240, 138, 5);
+    animation: blinker 1.5s linear infinite;
+  }
 }
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
+  }
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
   }
 }

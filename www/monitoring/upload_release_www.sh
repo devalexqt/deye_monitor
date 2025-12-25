@@ -1,7 +1,9 @@
 #!/bin/bash
 set -e
 echo "========================= WORKING ==================="
+npm run build
 echo "-->creating www archive..."
+
 
 TMP_DIR=$(mktemp -d)
 tar -czvf $TMP_DIR/www.tar.gz  -C dist .

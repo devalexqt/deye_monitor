@@ -87,14 +87,14 @@ if(this.devices.find(id=>id==this.data.id)){
     total_power+=this.load_obj[id].power/1000
  }//for
 
- var total_percent=total_power*100/(this.total_power/1000)
+ var total_percent=total_power*100/(this.total_power)
 
     return html`
       <div class="wrapper" >
         ${repeat(Object.keys(this.load_obj),id=>id,(id,index)=>html`
-                <div class="load" style="--width:${this.load_obj[id].percent}%;--color-bg-pv:${colors_inverter[id]};"><span>${this.load_obj[id].power}kW</span></div>       
+                <div class="load" style="--width:${this.load_obj[id].percent}%;--color-bg-pv:${colors_inverter[id]};"><span>${this.load_obj[id].power}W</span></div>       
             `)}
-            <div class="total-text">Grid: ${total_percent.toFixed(1)}%, ${total_power.toFixed(3)} kW</div> 
+            <div class="total-text">Grid: ${total_percent.toFixed(1)}%, ${(total_power/1000).toFixed(3)} kW</div> 
       </div>
     `
   }

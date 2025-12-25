@@ -66,7 +66,7 @@ if(this.devices.find(id=>id==this.data.id)){
            }
  }//if
 
- console.log(">>>>>this.load_obj:",this.load_obj)
+//  console.log(">>>>>this.load_obj:",this.load_obj)
 
 //calculate total power
  for(const [id,value] of Object.entries(this.load_obj)){
@@ -78,7 +78,7 @@ if(this.devices.find(id=>id==this.data.id)){
     return html`
       <div class="wrapper" >
         ${repeat(Object.keys(this.load_obj),id=>id,(id,index)=>html`
-                <div class="load" style="--width:${this.load_obj[id].percent}%;--color-bg-pv:${colors_inverter[id]};"><span>${this.load_obj[id].power}kW</span></div>       
+                <div class="load" style="--width:${this.load_obj[id].percent}%;--color-bg-pv:${colors_inverter[id]};"><span>${this.load_obj[id].power}W</span></div>       
             `)}
             <div class="total-text">Load: ${total_percent.toFixed(1)}%, ${total_power.toFixed(3)} kW</div> 
       </div>

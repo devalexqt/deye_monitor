@@ -4,6 +4,13 @@ This "Global service" include: webserver, python deye registers reader, redis (f
 For dev I used `vite` fast bundler.
 To serve I used self signed `SSL` cert for IP address.
 
+```
+# VIte dev server
+http://192.168.1.88:8080/
+npm run dev
+
+```
+
 ## local IP address SSL certificate
 To serve https from local ip address we need to generate cert localy:
 ```

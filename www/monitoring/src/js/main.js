@@ -4,16 +4,20 @@ import "@components/pv/index.js"
 import "@components/load/index.js"
 import "@components/generator/index.js"
 import "@components/grid/index.js"
+import "@components/inverters-colors/index.js"
 
 window.addEventListener("load",async ()=>{
     console.log(">>>window loaded!!!")
 
+    const elem_fullscreen_btn=document.body.querySelector("#fullscreen")
+        elem_fullscreen_btn.addEventListener("click",showFullScreen)
 })//onload
 
-window.showFullScreen=async function(e){
+async function showFullScreen(e){
+    console.log(">>>try: showFullScreen...",document.fullscreenElement)
    if (!document.fullscreenElement) {
         // Enter Fullscreen
-        document.documentElement.requestFullscreen().catch((err) => {
+        document.documentElement.requestFullscreen({navigationUI:"hide"}).catch((err) => {
           alert(`Error attempting to enable fullscreen: ${err.message}`)
         })
       } else {
@@ -29,7 +33,7 @@ const evtSource = new EventSource("/api/sse")
 evtSource.onmessage = (event) => {
     // Data usually arrives as a JSON string
     const data = JSON.parse(event.data)
-    console.log("SSE message:", data)
+    // console.log("SSE message:", data)
     
     if(data.type=="live-stats"&& data.id=="master-id"){
         display_bms(data)
@@ -56,7 +60,9 @@ function display_bms(data){
     const elem=document.body.querySelector("m-battery")
             elem.data=data
     const elem_date=document.body.querySelector("#update-date")
+        elem_date.removeAttribute("wait","")
         elem_date.innerHTML=`Latest update: ${new Date(data.ctime).toLocaleTimeString()}`
+        if(Math.abs(new Date()-new Date(data.ctime))>60000){elem_date.setAttribute("old-date","")}else{elem_date.removeAttribute("old-date")}
 
 }//display_bms
 

@@ -146,13 +146,13 @@ var total_power=0
     }//for
  }//for
 
- var total_percent=total_power*100/(this.total_power/1000)
+ var total_percent=total_power*100/(this.total_power)
 
     return html`
       <div class="wrapper" >
         ${repeat(Object.keys(this.pv_obj),id=>id,(id,index)=>html`
-                <div class="pv pv1" style="--width:${this.pv_obj[id]["PV1"].percent}%;--color-bg-pv:${colors_inverter[id]};"><div>PV1:</div><div>${this.pv_obj[id]["PV1"].power}kW</div></div>       
-                <div class="pv pv2" style="--width:${this.pv_obj[id]["PV2"].percent}%;--color-bg-pv:${colors_inverter[id]};"><div>PV2:</div><div>${this.pv_obj[id]["PV2"].power}kW</div></div>                   
+                <div class="pv pv1" style="--width:${this.pv_obj[id]["PV1"].percent}%;--color-bg-pv:${colors_inverter[id]};"><div>PV1:</div><div>${this.pv_obj[id]["PV1"].power}W</div></div>       
+                <div class="pv pv2" style="--width:${this.pv_obj[id]["PV2"].percent}%;--color-bg-pv:${colors_inverter[id]};"><div>PV2:</div><div>${this.pv_obj[id]["PV2"].power}W</div></div>                   
             `)}
             <div class="total-text">Solar: ${total_percent.toFixed(1)}%, ${total_power.toFixed(3)} kW</div> 
       </div>

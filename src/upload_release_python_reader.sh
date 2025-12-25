@@ -9,7 +9,7 @@ TMP_DIR=$(mktemp -d)
 cd python
 source env_deye/bin/activate
 pyinstaller --onefile --add-data="../inverters.json:." --clean read_inverters_data.py
-
+chmod a+x ./dist/read_inverters_data
 echo "Start to uploading release to gh..."
 gh release upload --repo https://github.com/devalexqt/deye_monitor.git --clobber www ./dist/read_inverters_data
 rm -fR $TMP_DIR

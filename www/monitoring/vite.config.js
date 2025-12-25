@@ -1,5 +1,7 @@
 import { defineConfig, loadEnv, } from 'vite';
 import path from 'path';
+import { viteStaticCopy } from 'vite-plugin-static-copy'
+import htmlMinifier from 'vite-plugin-html-minifier'
 
 // const apiUrl = import.meta.env.VITE_API_URL//client side
 
@@ -37,6 +39,11 @@ export default defineConfig(({mode})=>{
 
         ////////////////////////////////////////////////////////////////////////////// build /////////////////////////////////////////////////////////////
         build: {
+        // Generates .vite/manifest.json in outDir
+            manifest: true,            
+            // We want to target modern browsers (es) or universal (umd)
+            // formats: ['iife'],
+
             // 2. Target: Browserslist equivalent (default is 'modules')
             target: 'esnext', 
             
@@ -63,6 +70,33 @@ export default defineConfig(({mode})=>{
                 },
             },
             },
+            esbuild: {
+                // Drop console and/or debugger
+                drop: ['console', 'debugger'],
+            },        
         },//build
+
+
+        ////////////////////////////////////////////////////////////////////////////// plugins /////////////////////////////////////////////////////////////
+        plugins: [
+            viteStaticCopy({
+            targets: [
+                {
+                src: 'src/assets/icons',
+                dest: 'assets' // This puts them in dist/assets/icons
+                }
+            ]
+            }),
+
+            htmlMinifier({
+                collapseWhitespace: true,
+                removeComments: true,
+                minifyJS: true,     // Minifies JS inside <script> tags
+                minifyCSS: true,    // Minifies CSS inside <style> tags
+                decodeEntities: true,
+                removeAttributesQuotes: false,
+                }),            
+        ]        
+
     }//return config
 })//defineConfig

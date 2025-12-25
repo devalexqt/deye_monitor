@@ -30,6 +30,9 @@
 
         &[discharging]{
             --color-bar:var(--color-soc-discharging);
+            &::before{
+                animation-direction: reverse;
+            }
         }
 
         &[bat_low]{

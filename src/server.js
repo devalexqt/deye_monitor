@@ -9,6 +9,7 @@ import https from "https"
 
 const app = express()
 const port = 80
+const port_https=443
 
 console.log(">>>INVERTERS:",INVERTERS) 
 
@@ -64,9 +65,9 @@ app.get('/api/sse', async (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`)
+  console.log(`HTTPS Server running on http://localhostL:${port}...`)
 })
 
-https.createServer(options_ssl, app).listen(443, () => {
-  console.log('HTTPS Server running on https://192.168.1.95...');
+https.createServer(options_ssl, app).listen(port_https, () => {
+  console.log(`HTTPS Server running on https://localhostL:${port_https}...`);
 });
